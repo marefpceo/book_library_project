@@ -1,0 +1,61 @@
+{
+	"last_modified": {
+		"type": "/type/datetime",
+		"value": "2019-07-30T23:20:21.002861"
+	},
+	"latest_revision": 3,
+	"key": "/works/OL1001041W",
+	"authors": [
+		{
+			"type": {
+				"key": "/type/author_role"
+			},
+			"author": {
+				"key": "/authors/OL92987A"
+			}
+		},
+		{
+			"type": {
+				"key": "/type/author_role"
+			},
+			"author": {
+				"key": "/authors/OL2385190A"
+			}
+		},
+		{
+			"type": {
+				"key": "/type/author_role"
+			},
+			"author": {
+				"key": "/authors/OL366143A"
+			}
+		}
+	],
+	"created": {
+		"type": "/type/datetime",
+		"value": "2009-12-09T19:05:50.674576"
+	},
+	"title": "A shelter sketchbook",
+	"subject_places": [
+		"Great Britain"
+	],
+	"subjects": [
+		"World War, 1939-1945, in art",
+		"World War, 1939-1945",
+		"English Drawing",
+		"Pictorial works",
+		"English Drawings",
+		"Drawing By Individual Artists",
+		"Individual Sculptors And Their Work",
+		"Art and the war",
+		"Human figure in art",
+		"Art"
+	],
+	"subject_people": [
+		"Henry Moore (1898-1986)"
+	],
+	"type": {
+		"key": "/type/work"
+	},
+	"revision": 3
+}

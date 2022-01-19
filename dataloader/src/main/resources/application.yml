@@ -1,0 +1,46 @@
+#spring.data.cassandra.keyspace-name=main
+#spring.data.cassandra.username=lJmnaJPGJSUKtdaBleccsaZY
+#spring.data.cassandra.password=KWLqJgeRDl+iILrAA_8I4_540NYpYEhKBJg0Y4z5N3rxu3rwrEHpO+OjZntT_DfHgu,b--qpPqhabWtJMZ_qNezoPwofKn2DIF0f1CG7DC,cxtAJbEzLdzr9rNslZ6N.
+#spring.data.cassandra.schema-action=create-if-not-exists
+#spring.data.cassandra.request.timeout=10s
+#spring.data.cassandra.connection.connect-timeout=10s
+#spring.data.cassandra.connection.init-query-timeout=10s
+
+#datastax.astra.secure-connect-bundle=secure-connect.zip
+#astra.db.id=43192974-b6bf-43eb-9c6f-45b9129a2296-1
+#astra.db.region=us-east1
+#astra.db.keyspace=main
+#astra.db.application.token=AstraCS:lJmnaJPGJSUKtdaBleccsaZY:7051315f69462119a490f62b5cb774f525df3fc1ab33d5a630ed927465ff2e67
+
+openlibrary:
+  author:
+    data: src/main/resources/test-authors.txt 
+  book:
+    data: src/main/resources/test-works.txt   
+
+spring:
+  
+  data:
+    cassandra:
+      local-datacenter: datacenter1
+      keyspace-name: main
+      username: UQHTPRpXAXPYSaxafYaMYuef
+      password: gRSXgtk4_bSDNzmF4raZ0FjN5u5spYzCfS6brwH4Qg68zisYHIXSZ1l4F_WIw1f7ltayZI.5FioZlkduZj+KvyUPrCKj_0lJ0xnHt5,OHyzjp03aHIdo95tZKF3KpL5.
+      schema-action: create-if-not-exists
+      request:
+        timeout: 10s
+      connection:
+        connect-timeout: 10s
+        init-query-timeout: 10s
+
+
+
+datastax.astra:
+    secure-connect-bundle: secure-connect.zip
+
+
+astra.db:
+    id: 43192974-b6bf-43eb-9c6f-45b9129a2296-1
+    region: us-east1
+    keyspace: main
+    application.token: AstraCS:UQHTPRpXAXPYSaxafYaMYuef:93592d43c6c4277b2cb838847f79bcef8bd3c9aca005c8aefa531c7451d3b9ce
