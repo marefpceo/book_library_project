@@ -1,0 +1,80 @@
+package com.booktracker.service;
+
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.UserDetailsManager;
+import org.springframework.stereotype.Service;
+
+import com.booktracker.dao.UserDao;
+import com.booktracker.exceptions.BookTrackerUserException;
+import com.booktracker.model.BookUserDetails;
+import com.booktracker.model.PublicUserInformation;
+import com.booktracker.model.UserDimention;
+import com.booktracker.model.UserPasswordReset;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+	private final UserDetailsManager userDetailsManager;
+	private final PasswordEncoder passwordEncoder;
+	private final UserDao userDao;
+
+	@Autowired
+	public UserServiceImpl(UserDetailsManager userDetailsManager, PasswordEncoder passwordEncoder, UserDao userDao) {
+		this.userDetailsManager = Objects.requireNonNull(userDetailsManager, "userDetailsManager");
+		this.passwordEncoder = Objects.requireNonNull(passwordEncoder, "passwordEncoder");
+		this.userDao = Objects.requireNonNull(userDao, "userDao");
+	}
+
+	@Override
+	public PublicUserInformation registerNewUser(UserDimention userDimention) {
+		userDetailsManager.createUser(createUserDetails(userDimention));
+		return null;
+	}
+
+	@Override
+	public int resetUserPassword(String userName, UserPasswordReset passwordReset) {
+		UserDetails userDetails = createUserDetails(userName, passwordReset);
+		UserDetails existingUserDetails = userDetailsManager.loadUserByUsername(userName);
+		if (passwordEncoder.matches(userDetails.getPassword(), existingUserDetails.getPassword())) {
+			userDetailsManager.updateUser(userDetails);
+			return 1;
+		} else {
+			throw new BookTrackerUserException("Existing Password does not match.");
+		}
+	}
+
+	@Override
+	public PublicUserInformation getUserInformation(String userName) {
+		UserDimention userDimention = userDao.getUserInformation(userName);
+		return createPublicUser(userDimention);
+	}
+
+	private UserDetails createUserDetails(UserDimention userDimention) {
+		UserDetails userDetails = new BookUserDetails(userDimention);
+		return userDetails;
+	}
+
+	private UserDetails createUserDetails(String userName, UserPasswordReset passwordReset) {
+		UserDimention userDimention = new UserDimention();
+		userDimention.setUsername(userName);
+		userDimention.setPassword(passwordReset.getNewPassword());
+		UserDetails userDetails = new BookUserDetails(userDimention);
+		return userDetails;
+	}
+
+	private PublicUserInformation createPublicUser(UserDimention userDetails) {
+		PublicUserInformation userinformation = new PublicUserInformation();
+		userinformation.setUserName(userDetails.getUsername());
+		userinformation.setFirstName(userDetails.getFirstName());
+		userinformation.setLastName(userDetails.getLastName());
+		userinformation.setNumberOfHourReadEveryDay(userDetails.getAvgReadingHrsDaily());
+		userinformation.setFavoriteGenres(userDetails.getFavoriteGenres());
+
+		return userinformation;
+	}
+
+}
