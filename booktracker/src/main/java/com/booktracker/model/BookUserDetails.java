@@ -39,7 +39,7 @@ public class BookUserDetails implements UserDetails{
 
 	@Override
 	public boolean isAccountNonLocked() {
-		return !userDimention.isEnabled();
+		return userDimention.isEnabled();
 	}
 
 	@Override

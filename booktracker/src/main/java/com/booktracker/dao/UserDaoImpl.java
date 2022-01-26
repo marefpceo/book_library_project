@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcOperations;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.booktracker.model.UserAuthority;
 import com.booktracker.model.UserDimention;
@@ -29,15 +30,15 @@ public class UserDaoImpl implements UserDao {
 
 	private static final String SQL_GET_USER_COUNT = "SELECT COUNT(*) AS CNT FROM user_login WHERE rec_lgcl_del_ind = 'N'";
 
-	private static final String SQL_GET_USER_BY_USERNAME = "SELECT UL.firstName, UL.lastName, UL.username, UL.password, UL.enabled "
+	private static final String SQL_GET_USER_BY_USERNAME = "SELECT UL.firstName, UL.lastName, UL.username, UL.password, UL.enabled, "
 			+ " UL.expired, UA.authority " 
 			+ " FROM user_login UL JOIN user_auth UA " 
 			+ " ON UL.ID = UA.ID "
-			+ " WHERE UL.rec_lgcl_del_ind = 'N' UL.username = :userName";
+			+ " WHERE UL.rec_lgcl_del_ind = 'N' AND UL.username = :userName";
 	
 	private static final String SQL_GET_USER_INFORMATION_BY_USER_NAME = " SELECT UI.fav_genres, UI.avg_reading_hrs_daily "
 			+ " FROM user_login UL LEFT JOIN user_info UI "
-			+ " UL.id = UI.id "
+			+ " ON UL.id = UI.id "
 			+ " AND UL.rec_lgcl_del_ind = 'N' "
 			+ " WHERE UL.username = :userName";
 
@@ -84,11 +85,13 @@ public class UserDaoImpl implements UserDao {
 		Map<String, Object> parameters = new HashMap<>();
 		parameters.put("userName", userName);
 		List<Map<String, Object>> result = jdbcTemplate.queryForList(SQL_GET_USER_BY_USERNAME, parameters);
-		
-		UserDimention user = extractUSerDimention(result);
-		Map<String, Object> extraInformation = getUserExtraInformation(userName);
-		user.setFavoriteGenres(String.valueOf(extraInformation.get("fav_genres")));
-		user.setAvgReadingHrsDaily(Integer.valueOf(String.valueOf(extraInformation.get("avg_reading_hrs_daily"))));
+		UserDimention user = null;
+		if (result.size() > 0) {
+			user = extractUSerDimention(result);
+			Map<String, Object> extraInformation = getUserExtraInformation(userName);
+			user.setFavoriteGenres(String.valueOf(extraInformation.get("fav_genres")));
+			user.setAvgReadingHrsDaily(Integer.valueOf(String.valueOf(extraInformation.get("avg_reading_hrs_daily"))));
+		}
 		return user;
 	}
 
@@ -129,6 +132,7 @@ public class UserDaoImpl implements UserDao {
 	
 	private Map<String, Object> getUserExtraInformation(String userName){
 		Map<String, Object> parameters = new HashMap<>();
+		parameters.put("userName", userName);
 		Map<String, Object> result = jdbcTemplate.queryForMap(SQL_GET_USER_INFORMATION_BY_USER_NAME, parameters);
 		
 		return result;
@@ -142,10 +146,12 @@ public class UserDaoImpl implements UserDao {
 
 	private Map<String, Object>[] prepareBatches(UserDimention userInformation, long userId) {
 		Map<String, Object>[] parameters = new Map[userInformation.getAuthorities().size()];
+		int counter =0;
 		for (UserAuthority auth : userInformation.getAuthorities()) {
 			Map<String, Object> param = new HashMap<>();
 			param.put("id", userId);
 			param.put("authority", auth.getAuthority());
+			parameters[counter++] = param;
 		}
 		return parameters;
 	}
@@ -168,7 +174,7 @@ public class UserDaoImpl implements UserDao {
 		parameters.put("enabled", 1);
 		parameters.put("expired", 0);
 
-		int insertCount = jdbcTemplate.update(SQL_DELETE_USER_BY_USERNAME, parameters);
+		int insertCount = jdbcTemplate.update(SQL_REGISTER_NEW_USER, parameters);
 		Long userId = 0l;
 		if (insertCount > 0) {
 			parameters.clear();

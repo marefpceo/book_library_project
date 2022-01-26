@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.UserDetailsManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.booktracker.dao.UserDao;
 import com.booktracker.exceptions.BookTrackerUserException;
@@ -30,9 +31,14 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	//@Transactional
 	public PublicUserInformation registerNewUser(UserDimention userDimention) {
-		userDetailsManager.createUser(createUserDetails(userDimention));
-		return null;
+		if (!userDetailsManager.userExists(userDimention.getUsername())) {
+			userDetailsManager.createUser(createUserDetails(userDimention));
+			return createPublicUser(userDimention);
+		} else {
+			throw new BookTrackerUserException("User already exists.");
+		}
 	}
 
 	@Override

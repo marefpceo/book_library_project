@@ -34,9 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		}).and().csrf().disable().
 
 		
-				authorizeRequests((requests) -> requests.antMatchers("/api/dashboard/*")
+				authorizeRequests((requests) -> requests.antMatchers("/api/dashboard/*", "api/user/login")
 						.authenticated()
-						.mvcMatchers("api/author/*", "api/book/*", "api/search/*", "api/user/*")
+						.mvcMatchers("api/author/*", "api/book/*", "api/search/*", "api/user/register")
 						.permitAll());
 		http.formLogin();
 		http.httpBasic();

@@ -12,7 +12,10 @@ public class UserAuthority implements Serializable {
 	private String authority;
 	
 	public UserAuthority() {
-		
+	}
+	
+	public UserAuthority(String authority) {
+		this.authority = authority;
 	}
 
 	public String getAuthority() {
