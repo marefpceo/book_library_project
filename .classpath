@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="booktracker/src/main/java"/>
+	<classpathentry kind="src" path="booktracker/src/test/java"/>
+	<classpathentry kind="src" path="hsqldb/doc/verbatim/src"/>
+	<classpathentry kind="src" path="hsqldb/integration/extAuthWithSpring/src"/>
+	<classpathentry excluding="modules/org.hsqldb/|modules/org.hsqldb.sqltool/|modules/org.hsqldb.min/" kind="src" path="hsqldb/src"/>
+	<classpathentry kind="src" path="hsqldb/src/modules/org.hsqldb"/>
+	<classpathentry kind="src" path="hsqldb/src/modules/org.hsqldb.min"/>
+	<classpathentry kind="src" path="hsqldb/src/modules/org.hsqldb.sqltool"/>
+	<classpathentry kind="lib" path="booktracker/.mvn/wrapper/maven-wrapper.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

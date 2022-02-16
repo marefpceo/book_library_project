@@ -1,5 +1,5 @@
 import React from "react"
-import HomePage from "./Pages/HomePage/homepage";
+import { HomePage } from "./Pages/index"
 
 function App() {
   return (
@@ -9,4 +9,4 @@ function App() {
   );
 }
 
-export default App;
+export default App
