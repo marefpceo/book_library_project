@@ -1,0 +1,42 @@
+{
+  "api": [
+    {
+      "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "register": [
+        {
+          "user": {
+            "firstName": "Melyssa",
+            "lastName": "Kelley",
+            "email": "vetyto@mailinator.com",
+            "password": "Pa$$w0rd!",
+            "confirmPassword": "Pa$$w0rd!"
+          }
+        }
+      ],
+      "id": 4
+    },
+    {
+      "user": [
+        {
+          "register": {
+            "firstName": "Ivory",
+            "lastName": "Le",
+            "userName": "bamoluzef",
+            "email": "qiveni@mailinator.com",
+            "password": "Pa$$w0rd!",
+            "confirmPassword": "Pa$$w0rd!"
+          }
+        }
+      ],
+      "id": 5
+    }
+  ]
+}
