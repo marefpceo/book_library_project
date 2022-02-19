@@ -1,9 +1,9 @@
 import React from 'react'
-import { Outlet, Link, NavLink } from "react-router-dom"
+import { Outlet, Link } from "react-router-dom"
 
 function Navbar() {
     return <div>
-        <nav classNames="bg-white border-gray-200 px-2 sm:px-4 py-2 5 dark:bg-slate-200">
+        <nav className="bg-white border-gray-200 px-2 sm:px-4 py-2 5 dark:bg-slate-200">
             <div className="container flex flex-wrap justify-between items-center mx-auto">
                 <Link to="/" className="flex self-center text-lg font-semibold whitespace-nowrap dark:text-gray-500">
                     Book Tracker
