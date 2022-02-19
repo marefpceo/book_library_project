@@ -1,12 +1,8 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import './index.css';
-import App from './App';
-import HomeP<TextField type="email"
-name="email"
-label="Email Address"
-/>age from './Pages/HomePage/homepage'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import './index.css'
+import App from './App'
 import Login from './Pages/Login/login'
 import Registration from './Pages/Registration/registration'
 
