@@ -99,12 +99,12 @@ const RegistrationForm = () => {
         url: REGISTER_URL,
         headers: { 'Content-Type': 'application/json' },
         data: JSON.stringify({
-          firstName,
-          lastName,
-          userName,
-          pwd,
-          favoriteGenres,
-          avgReadingHrsDaily,
+          "firstName": firstName,
+          "lastName": lastName,
+          "username": userName,
+          "password": pwd,
+          "favoriteGenres": favoriteGenres,
+          "avgReadingHrsDaily": avgReadingHrsDaily,
         }),
       })
       console.log(response.data);
@@ -123,6 +123,21 @@ const RegistrationForm = () => {
   };
 
   return (
+    <>
+    {
+      success ? (
+        <section className="w-128 flex justify-center flex-col self-center shadow-md bg-white rounded px-8 pt-6 pb-8 mb-4 font-['Roboto]">
+          <h1 className="text-center text-4xl text-lime-500 mb-10">Registration Successful!</h1>
+          <p className="flex justify-center">
+          <Link
+            to="/login"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          >
+            Login
+          </Link>
+          </p>
+        </section>
+      ) : (
     <section>
       <p
         ref={errRef}
@@ -475,6 +490,8 @@ const RegistrationForm = () => {
         </span>
       </p>
     </section>
+      )}
+    </>
   );
 };
 
