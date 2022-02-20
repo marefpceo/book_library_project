@@ -4,6 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+Get dependenies - In the project directory, you can run:
+
+### `npm install`
+
 For Tailwindcss - In the project directory, you can run:
 
 ### `npm run start`
