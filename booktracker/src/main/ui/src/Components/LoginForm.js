@@ -64,6 +64,7 @@ const LoginForm = () => {
       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
       <h1 className="text-center text-4xl text-gray-500 mb-10">Sign In</h1>
       <form onSubmit={handleSubmit} className="w-128 flex justify-center flex-col self-center shadow-md bg-white rounded px-8 pt-6 pb-8 mb-4 font-['Roboto]">
+      <div className="flex flex-col mb-3">
         <label htmlFor="username" className="block text-gray-700 text-sm mb-2">Username</label>
         <input 
           type="text" 
@@ -77,6 +78,8 @@ const LoginForm = () => {
             "w-full shadow appearance-none border rounded py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder-red-700 text-base rounded-lg "
           }
         />
+      </div>
+      <div className="flex flex-col mb-3">
         <label htmlFor="password" className="block text-gray-700 text-sm mb-2">Password</label>
         <input 
           type="password" 
@@ -88,6 +91,7 @@ const LoginForm = () => {
             "w-full shadow appearance-none border rounded py-2 px-2 text-gray-700 leading-tight focus:outline-none focus:shadow-outline placeholder-red-700 text-base rounded-lg "
           }
         />
+        </div>
         <button className="mt-6 text-white w-full rounded-full bg-blue-500 hover:bg-blue-700:text-white font-bold py-2 px-4 round">Sign In</button>
       </form>
       <p className="flex mt-14 justify-center">

@@ -8,14 +8,14 @@ import Login from './Pages/Login/login'
 import Registration from './Pages/Registration/registration'
 
 ReactDOM.render(
-  <AuthProvider>
     <BrowserRouter>
+    <AuthProvider>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Registration />} />
       </Routes>
-    </BrowserRouter>
-  </AuthProvider>,
+      </AuthProvider>
+    </BrowserRouter>,
   document.getElementById('root')
 );
