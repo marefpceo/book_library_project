@@ -101,6 +101,7 @@ const RegistrationForm = () => {
         data: JSON.stringify({
           firstName,
           lastName,
+          userName,
           pwd,
           favoriteGenres,
           avgReadingHrsDaily,
