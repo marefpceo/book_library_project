@@ -1,7 +1,13 @@
-import { useRef, useState, useEffect, useContext } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react'
+import AuthContext from '../context/AuthProvider';
 import { Link } from 'react-router-dom'
+import axios from '../api/axios'
+
+const LOGIN_URL = '/api/user/login'
 
 const LoginForm = () => {
+  const { setAuth } = useContext(AuthContext)
+  
   const userRef = useRef();
   const errRef = useRef();
 
@@ -21,7 +27,36 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
+    try {
+      const response = await axios({
+        method: 'GET',
+        url: LOGIN_URL,
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json', withCredentials: true },
+        // data: JSON.stringify({
+        //   "username": user,
+        //   "password": pwd,
+        // }),
+        auth: {
+          "username": user,
+          "password": pwd,
+        },
+      })
+      setAuth({ user, pwd })
+      setUser('')
+      setPwd('')
+      setSuccess(true)
+    } catch (error) {
+      if (!error?.response) {
+        setErrMsg('No Server Response');
+      } else if (error.response?.status === 400) {
+        setErrMsg('Missing Username or Password');
+      } else if (error.response?.status === 401) {
+        setErrMsg('Unauthorized');
+      } else {
+        setErrMsg('Login Failed');
+      }
+      errRef.current.focus();
+      }
   }
 
   return (
