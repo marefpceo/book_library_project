@@ -1,6 +1,6 @@
 # book_library_project
 
-This is a guide on how to run the Book Library Project dev server
+This is a guide on how to run the Book Library Project dev server.
 This will broken up into thre parts the back-end, database and front-end
 
 ## Tools 
