@@ -12,11 +12,11 @@ Make sure you have the following install on you computer:
 
 ## Back-end Setup
 
-Get dependenies - In the following project directory /booktracker, you can run:
+Get dependenies - In the following project directory `/booktracker`, you can run:
 
 ### `mvn clean install`
 
-Open eclipse in the /booktracker directory, navigate to src/main/java/booktracker
+Open eclipse in the `/booktracker` directory, navigate to `src/main/java/booktracker`
 
 In the main file run the project as a Java Application
 
@@ -24,7 +24,7 @@ Server will be up and running. Make sure there are no errors on terminal.
 
 ## Database Setup
 
-In the project directory navigate to /hsqldb/lib
+In the project directory navigate to `/hsqldb/lib`
 
 Open a terminal in the following directory, you can run:
 
@@ -40,7 +40,7 @@ This will allow you to execute SQL commands and view results/data in tables
 
 ## Front-end Setup
 
-Get dependenies - In the following project directory /booktracker/src/main/ui, you can run:
+Get dependenies - In the following project directory `/booktracker/src/main/ui`, you can run:
 
 ### `npm install`
 
