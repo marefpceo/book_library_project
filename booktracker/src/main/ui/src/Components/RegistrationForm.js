@@ -84,7 +84,7 @@ const RegistrationForm = () => {
   }, [firstName, lastName, userName, pwd, matchPwd]);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // if button enabled with JS hack
     const v1 = USER_REGEX.test(userName);
     const v2 = PWD_REGEX.test(pwd);

@@ -1,20 +1,24 @@
-import { useRef, useState, useEffect, useContext } from 'react'
-import AuthContext from '../context/AuthProvider';
-import { Link } from 'react-router-dom'
+import { useRef, useState, useEffect } from 'react'
+import useAuth from '../hooks/useAuth'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import axios from '../api/axios'
 
 const LOGIN_URL = '/api/user/login'
 
 const LoginForm = () => {
-  const { setAuth } = useContext(AuthContext)
+  const { setAuth } = useAuth()
   
+  const navigate = useNavigate()
+  const location = useLocation()
+
+  const from = location.state?.from?.pathname || "/dashboard"
+
   const userRef = useRef();
   const errRef = useRef();
 
   const [user, setUser] = useState('');
   const [pwd, setPwd] = useState('');
   const [errMsg, setErrMsg] = useState('');
-  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     userRef.current.focus();
@@ -44,7 +48,7 @@ const LoginForm = () => {
       setAuth({ user, pwd })
       setUser('')
       setPwd('')
-      setSuccess(true)
+      navigate(from, { replace: true })
     } catch (error) {
       if (!error?.response) {
         setErrMsg('No Server Response');

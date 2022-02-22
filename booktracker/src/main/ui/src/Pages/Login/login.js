@@ -1,14 +1,11 @@
-import React from "react"
+// import useAuth from "../../hooks/useAuth"
+// import { Link, useNavigate, useLocation } from 'react-router-dom'
 import LoginForm from "../../Components/LoginForm"
-import Navbar from "../../Components/Navbar";
 
 const login = () => {
-  return <>
-    <Navbar />
-    <div className="grid place-items-center h-screen">
+  return <section className="grid place-items-center h-screen">
       <LoginForm />
-    </div>
-  </>;
-};
+  </section>
+}
 
-export default login;
+export default login

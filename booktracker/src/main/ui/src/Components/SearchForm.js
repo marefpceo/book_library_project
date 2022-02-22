@@ -1,6 +1,4 @@
-import React from 'react';
-
-function SearchForm() {
+const SearchForm = () => {
     return <div className="w-full flex flex-col justify-content self-center">
         <label htmlFor="search" className="w-96 relative block self-center my-6">
             <span className="sr-only">Search</span>
@@ -13,4 +11,4 @@ function SearchForm() {
     </div>;
 }
 
-export default SearchForm;
+export default SearchForm
