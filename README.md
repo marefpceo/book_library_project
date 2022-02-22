@@ -1,7 +1,7 @@
 # book_library_project
 
-This is a guide on how to run the Book Library Project dev server.
-This will broken up into thre parts the back-end, database and front-end
+This is a guide on how to run the Book Library Project dev server.<br>
+This will be broken up into three parts the back-end, database and front-end.
 
 ## Tools 
 Make sure you have the following install on you computer:
