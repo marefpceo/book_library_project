@@ -5,10 +5,10 @@ This will broken up into thre parts the back-end, database and front-end
 
 ## Tools 
 Make sure you have the following install on you computer:
-Latest Java
-Maven
-Node js (w/npm)*
-Eclipse IDE
+* Latest Java
+* Maven
+* Node js (w/npm)*
+* Eclipse IDE
 
 ## Back-end Setup
 
