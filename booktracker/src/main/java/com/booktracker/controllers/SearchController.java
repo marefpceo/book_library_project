@@ -2,6 +2,8 @@ package com.booktracker.controllers;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+import java.util.stream.Collectors;
+
 import javax.annotation.PostConstruct;
 
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,14 @@ public class SearchController {
 				.retrieve()
 				.bodyToMono(OpenLibrarySearchResult.class)
 				.block();
+		searchResults.setSearchedBooks(searchResults.getSearchedBooks().stream().limit(10).collect(Collectors.toList()));
+		
+		searchResults.setSearchedBooks(searchResults.getSearchedBooks().stream().map(book -> {
+			book.setCoverArtUrl(String.format("http://covers.openlibrary.org/b/id/%s-M.jpg", book.getCoverId()));
+			return book;
+		}).collect(Collectors.toList())
 
+		);
 		return ResponseEntity.ok(searchResults);
 	}
 
