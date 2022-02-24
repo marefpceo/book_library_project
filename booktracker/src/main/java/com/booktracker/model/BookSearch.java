@@ -20,6 +20,10 @@ public class BookSearch implements Serializable{
 	
 	@JsonProperty("cover_i")
 	private String coverId;
+	
+	private String coverArtUrl;
+	
+	
 
 	public BookSearch() {
 		
@@ -31,6 +35,15 @@ public class BookSearch implements Serializable{
 		this.AuthorName = AuthorName;
 	}
 	
+	
+	public String getCoverArtUrl() {
+		return coverArtUrl;
+	}
+
+	public void setCoverArtUrl(String coverArtUrl) {
+		this.coverArtUrl = coverArtUrl;
+	}
+
 	public String getCoverId() {
 		return coverId;
 	}
