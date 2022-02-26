@@ -1,10 +1,14 @@
-import  { faHeart } from "@fortawesome/free-solid-svg-icons"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { FaRegHeart } from "react-icons/fa"
+import { FaHeart } from "react-icons/fa"
 import { Component } from "react";
 
-// const showMessage = () => {
-//     alert("Added to your favorites!");
-// };
+const addMessage = () => {
+    alert("Added to favorites!");
+};
+
+const removeMessage = () => {
+    alert("Removed from favorites!");
+};
 
 class FavoriteButton extends Component{
 
@@ -14,14 +18,22 @@ toggle = () => {
     let localLiked = this.state.liked;
     localLiked = !localLiked;
     this.setState({liked: localLiked});
+
+    if (localLiked == true){
+        addMessage();
+    };
+
+    if (localLiked == false){
+        removeMessage();
+    };   
 };
 
 render() {
     return(
         <div className="flex justify-between pt-1" onClick={() => this.toggle()}>
 
-            {this.state.liked === false ? (<FontAwesomeIcon icon = {faHeart} />)
-            : (<FontAwesomeIcon icon = {faHeart} transform="grow-4" color="red"/>)}
+            {this.state.liked === false ? (<FaRegHeart />)
+            : (<FaHeart color="red"/>)}
         </div>
     );
 }
