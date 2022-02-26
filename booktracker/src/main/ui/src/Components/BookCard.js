@@ -3,6 +3,7 @@ import {
   } from "@fortawesome/free-solid-svg-icons"
   import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
   import BookBanner from '../assets/harrypotterprisonerazkabanbanner.jpg'
+  import FavoriteButton from "./FavoriteButton"
 
 const BookCard = () => {
 
@@ -21,7 +22,7 @@ const BookCard = () => {
             </div>
             <div className="flex justify-between pt-3">
                 <FontAwesomeIcon icon={faComments} />
-                <FontAwesomeIcon icon={faHeart} />
+                <FavoriteButton />
             </div>
             <img src="" alt="" />
         </section>
